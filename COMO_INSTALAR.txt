@@ -1,0 +1,15 @@
+PROJETO SUPORTE CAIO - INSTRUCOES RAPIDAS
+
+1. Extraia esta pasta.
+2. Abra um terminal dentro dela.
+3. Instale as dependencias:
+   npm install
+4. Confira se o arquivo .env esta presente.
+5. Aplique as tabelas e funcoes no Supabase:
+   supabase link --project-ref wyulqskmxfaahdmlwdyu
+   supabase db push
+6. Inicie o sistema:
+   npm run dev
+
+O arquivo README.md contem as instrucoes completas de configuracao do Supabase Auth.
+O arquivo .env contem as configuracoes do projeto e nao deve ser publicado.
