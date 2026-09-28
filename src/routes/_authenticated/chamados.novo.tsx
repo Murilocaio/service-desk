@@ -89,9 +89,9 @@ function NewTicketPage() {
             "Administrativo",
             "TI",
             "Fiscalização",
-            "AT",
-            "Cadastro Subterrâneo",
-            "Treinamentos",
+            "AT (Fiscalização AT)",
+            "Treinamento",
+            "Subterrâneo",
           ])
           .order("name"),
         supabase.from("teams").select("id,name").eq("is_active", true).order("name"),

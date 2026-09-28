@@ -44,9 +44,9 @@ const ALLOWED_CATEGORIES = [
   "Administrativo",
   "TI",
   "Fiscalização",
-  "AT",
-  "Cadastro Subterrâneo",
-  "Treinamentos",
+  "AT (Fiscalização AT)",
+  "Treinamento",
+  "Subterrâneo",
 ];
 
 function SettingsPage() {
@@ -65,9 +65,9 @@ function SettingsPage() {
             "Administrativo",
             "TI",
             "Fiscalização",
-            "AT",
-            "Cadastro Subterrâneo",
-            "Treinamentos",
+            "AT (Fiscalização AT)",
+            "Treinamento",
+            "Subterrâneo",
           ])
           .order("name"),
         supabase
