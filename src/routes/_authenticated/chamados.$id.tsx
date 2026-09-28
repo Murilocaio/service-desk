@@ -22,6 +22,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useMe } from "@/lib/auth";
 import {
   PRIORITY_LABELS,
+  PRIORITY_ORDER,
   STATUS_LABELS,
   STATUS_ORDER,
   formatDateTime,
@@ -553,7 +554,7 @@ function TicketDetail() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    {(["p1", "p2", "p3", "p4"] as TicketPriority[]).map((p) => (
+                    {PRIORITY_ORDER.map((p) => (
                       <SelectItem key={p} value={p}>
                         {PRIORITY_LABELS[p]}
                       </SelectItem>

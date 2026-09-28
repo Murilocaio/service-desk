@@ -130,7 +130,7 @@ function DashboardPage() {
       resolvidos: by("resolvido"),
       encerrados: by("encerrado"),
       atrasados,
-      criticos: tickets.filter((t) => t.priority === "p1").length,
+      altaPrioridade: tickets.filter((t) => t.priority === "p1").length,
     };
   }, [tickets]);
 
@@ -211,7 +211,7 @@ function DashboardPage() {
         <Kpi label="Resolvidos" value={counts.resolvidos} />
         <Kpi label="Encerrados" value={counts.encerrados} />
         <Kpi label="Atrasados" value={counts.atrasados} tone="destructive" />
-        <Kpi label="Críticos (P1)" value={counts.criticos} tone="accent" />
+        <Kpi label="Alta prioridade (P1)" value={counts.altaPrioridade} tone="accent" />
       </div>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-2">

@@ -22,6 +22,7 @@ import {
   BR_STATES,
   LEVEL_LABELS,
   PRIORITY_LABELS,
+  PRIORITY_ORDER,
   suggestPriority,
   type LevelScale,
   type TicketPriority,
@@ -54,7 +55,7 @@ function NewTicketPage() {
   const [description, setDescription] = useState("");
   const [impact, setImpact] = useState<LevelScale>("medio");
   const [urgency, setUrgency] = useState<LevelScale>("medio");
-  const [priority, setPriority] = useState<TicketPriority>("p3");
+  const [priority, setPriority] = useState<TicketPriority>("p2");
   const [categoryId, setCategoryId] = useState<string>("");
   const [teamId, setTeamId] = useState<string>("");
   const [requesterName, setRequesterName] = useState("");
@@ -283,7 +284,7 @@ function NewTicketPage() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {(["p2", "p3", "p4"] as TicketPriority[]).map((p) => (
+                      {PRIORITY_ORDER.map((p) => (
                         <SelectItem key={p} value={p}>
                           {PRIORITY_LABELS[p]}
                         </SelectItem>

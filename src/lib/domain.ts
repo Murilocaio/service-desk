@@ -11,7 +11,7 @@ export type TicketStatus =
   | "reaberto"
   | "cancelado";
 
-export type TicketPriority = "p1" | "p2" | "p3" | "p4";
+export type TicketPriority = "p1" | "p2" | "p3";
 export type LevelScale = "baixo" | "medio" | "alto" | "critico";
 export type AppRole = "admin" | "gestor" | "tecnico" | "solicitante";
 
@@ -55,17 +55,17 @@ export const OPEN_STATUSES: TicketStatus[] = [
 ];
 
 export const PRIORITY_LABELS: Record<TicketPriority, string> = {
-  p1: "P1 — Crítica",
-  p2: "P2 — Alta",
-  p3: "P3 — Média",
-  p4: "P4 — Baixa",
+  p1: "P1 — Alta",
+  p2: "P2 — Média",
+  p3: "P3 — Baixa",
 };
+
+export const PRIORITY_ORDER: TicketPriority[] = ["p1", "p2", "p3"];
 
 export const PRIORITY_SHORT: Record<TicketPriority, string> = {
   p1: "P1",
   p2: "P2",
   p3: "P3",
-  p4: "P4",
 };
 
 export const LEVEL_LABELS: Record<LevelScale, string> = {
@@ -86,9 +86,9 @@ export const ROLE_LABELS: Record<AppRole, string> = {
 export function suggestPriority(impact: LevelScale, urgency: LevelScale): TicketPriority {
   const weight: Record<LevelScale, number> = { baixo: 1, medio: 2, alto: 3, critico: 4 };
   const score = weight[impact] + weight[urgency];
-  if (score >= 6) return "p2";
-  if (score >= 4) return "p3";
-  return "p4";
+  if (score >= 6) return "p1";
+  if (score >= 4) return "p2";
+  return "p3";
 }
 
 export type SlaState = "no_prazo" | "atencao" | "atrasado" | "concluido" | "sem_prazo";

@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import {
   OPEN_STATUSES,
   PRIORITY_LABELS,
+  PRIORITY_ORDER,
   STATUS_LABELS,
   formatDateTime,
   slaState,
@@ -49,7 +50,7 @@ function ReportsPage() {
     const list = data ?? [];
     const open = list.filter((t) => OPEN_STATUSES.includes(t.status));
     const late = open.filter((t) => slaState(t.due_at, t.status).state === "atrasado");
-    const byPriority = (["p1", "p2", "p3", "p4"] as TicketPriority[]).map((p) => ({
+    const byPriority = PRIORITY_ORDER.map((p) => ({
       p,
       count: list.filter((t) => t.priority === p).length,
     }));

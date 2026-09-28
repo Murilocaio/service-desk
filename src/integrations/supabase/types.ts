@@ -787,7 +787,7 @@ export type Database = {
     Enums: {
       app_role: "admin" | "gestor" | "tecnico" | "solicitante"
       level_scale: "baixo" | "medio" | "alto" | "critico"
-      ticket_priority: "p1" | "p2" | "p3" | "p4"
+      ticket_priority: "p1" | "p2" | "p3"
       ticket_status:
         | "novo"
         | "triagem"
@@ -929,7 +929,7 @@ export const Constants = {
     Enums: {
       app_role: ["admin", "gestor", "tecnico", "solicitante"],
       level_scale: ["baixo", "medio", "alto", "critico"],
-      ticket_priority: ["p1", "p2", "p3", "p4"],
+      ticket_priority: ["p1", "p2", "p3"],
       ticket_status: [
         "novo",
         "triagem",

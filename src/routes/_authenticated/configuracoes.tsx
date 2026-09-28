@@ -24,7 +24,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
-import { PRIORITY_LABELS, type TicketPriority } from "@/lib/domain";
+import { PRIORITY_LABELS, PRIORITY_ORDER, type TicketPriority } from "@/lib/domain";
 
 export const Route = createFileRoute("/_authenticated/configuracoes")({
   head: () => ({
@@ -73,7 +73,7 @@ function SettingsPage() {
         supabase
           .from("sla_config")
           .select("*")
-          .in("priority", ["p2", "p3", "p4"])
+          .in("priority", PRIORITY_ORDER)
           .order("priority"),
       ]);
       return { categories: categories.data ?? [], sla: sla.data ?? [] };

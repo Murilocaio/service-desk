@@ -40,7 +40,6 @@ const priorityStyle: Record<TicketPriority, string> = {
   p1: "bg-destructive text-destructive-foreground",
   p2: "bg-accent text-accent-foreground",
   p3: "bg-info text-info-foreground",
-  p4: "bg-muted text-muted-foreground",
 };
 
 export function PriorityBadge({
