@@ -518,7 +518,6 @@ function TicketDetail() {
                         status: v,
                         resolved_at:
                           v === "resolvido" ? new Date().toISOString() : ticket.resolved_at,
-                        closed_at: v === "encerrado" ? new Date().toISOString() : ticket.closed_at,
                       },
                       "status",
                       `Status alterado para ${STATUS_LABELS[v as TicketStatus]}`,
@@ -571,7 +570,7 @@ function TicketDetail() {
                     updateTicket(
                       {
                         assignee_id: v,
-                        status: ticket.status === "novo" ? "atribuido" : ticket.status,
+                        status: ticket.status === "novo" ? "atendimento" : ticket.status,
                       },
                       "atribuicao",
                       `Atribuído a ${nameOf(v)}`,
@@ -621,34 +620,6 @@ function TicketDetail() {
               >
                 {busy && <Loader2 className="mr-2 size-4 animate-spin" />}
                 Marcar como resolvido
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full"
-                disabled={busy}
-                onClick={() =>
-                  updateTicket(
-                    { status: "encerrado", closed_at: new Date().toISOString(), closed_by: me?.id },
-                    "encerramento",
-                    "Chamado encerrado",
-                  )
-                }
-              >
-                Encerrar chamado
-              </Button>
-              <Button
-                variant="ghost"
-                className="w-full"
-                disabled={busy}
-                onClick={() =>
-                  updateTicket(
-                    { status: "reaberto", resolved_at: null, closed_at: null },
-                    "reabertura",
-                    "Chamado reaberto",
-                  )
-                }
-              >
-                Reabrir
               </Button>
             </CardContent>
           </Card>

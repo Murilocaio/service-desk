@@ -1,58 +1,28 @@
-export type TicketStatus =
-  | "novo"
-  | "triagem"
-  | "atribuido"
-  | "atendimento"
-  | "aguardando_usuario"
-  | "aguardando_terceiro"
-  | "validacao"
-  | "resolvido"
-  | "encerrado"
-  | "reaberto"
-  | "cancelado";
+export type TicketStatus = "novo" | "atendimento" | "aguardando" | "validacao" | "resolvido";
 
 export type TicketPriority = "p1" | "p2" | "p3";
 export type LevelScale = "baixo" | "medio" | "alto" | "critico";
 export type AppRole = "admin" | "gestor" | "tecnico" | "solicitante";
 
-export const STATUS_LABELS: Record<TicketStatus, string> = {
+export const STATUS_LABELS: Record<string, string> = {
   novo: "Novo",
-  triagem: "Em triagem",
-  atribuido: "Atribuído",
   atendimento: "Em atendimento",
-  aguardando_usuario: "Aguardando usuário",
-  aguardando_terceiro: "Aguardando terceiro",
+  aguardando: "Aguardando",
+  aguardando_usuario: "Aguardando",
+  aguardando_terceiro: "Aguardando",
   validacao: "Em validação",
   resolvido: "Resolvido",
-  encerrado: "Encerrado",
-  reaberto: "Reaberto",
-  cancelado: "Cancelado",
 };
 
 export const STATUS_ORDER: TicketStatus[] = [
   "novo",
-  "triagem",
-  "atribuido",
   "atendimento",
-  "aguardando_usuario",
-  "aguardando_terceiro",
+  "aguardando",
   "validacao",
   "resolvido",
-  "encerrado",
-  "reaberto",
-  "cancelado",
 ];
 
-export const OPEN_STATUSES: TicketStatus[] = [
-  "novo",
-  "triagem",
-  "atribuido",
-  "atendimento",
-  "aguardando_usuario",
-  "aguardando_terceiro",
-  "validacao",
-  "reaberto",
-];
+export const OPEN_STATUSES: TicketStatus[] = ["novo", "atendimento", "aguardando", "validacao"];
 
 export const PRIORITY_LABELS: Record<TicketPriority, string> = {
   p1: "P1 — Alta",
@@ -97,7 +67,7 @@ export function slaState(
   dueAt: string | null | undefined,
   status: TicketStatus,
 ): { state: SlaState; label: string; msLeft: number | null } {
-  if (status === "encerrado" || status === "resolvido" || status === "cancelado") {
+  if (status === "resolvido" || status === "encerrado" || status === "cancelado") {
     return { state: "concluido", label: "Concluído", msLeft: null };
   }
   if (!dueAt) return { state: "sem_prazo", label: "Sem prazo", msLeft: null };

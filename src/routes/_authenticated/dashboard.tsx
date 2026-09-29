@@ -122,13 +122,10 @@ function DashboardPage() {
     return {
       total: tickets.length,
       novos: by("novo"),
-      triagem: by("triagem"),
-      atribuidos: by("atribuido"),
       atendimento: by("atendimento"),
-      aguardando_usuario: by("aguardando_usuario"),
-      aguardando_terceiro: by("aguardando_terceiro"),
+      aguardando: by("aguardando"),
+      validacao: by("validacao"),
       resolvidos: by("resolvido"),
-      encerrados: by("encerrado"),
       atrasados,
       altaPrioridade: tickets.filter((t) => t.priority === "p1").length,
     };
@@ -202,14 +199,11 @@ function DashboardPage() {
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
         <Kpi label="Total" value={counts.total} highlight />
-        <Kpi label="Novos" value={counts.novos} />
-        <Kpi label="Em triagem" value={counts.triagem} />
-        <Kpi label="Atribuídos" value={counts.atribuidos} />
+        <Kpi label="Novo" value={counts.novos} />
         <Kpi label="Em atendimento" value={counts.atendimento} />
-        <Kpi label="Aguard. usuário" value={counts.aguardando_usuario} />
-        <Kpi label="Aguard. terceiro" value={counts.aguardando_terceiro} />
-        <Kpi label="Resolvidos" value={counts.resolvidos} />
-        <Kpi label="Encerrados" value={counts.encerrados} />
+        <Kpi label="Aguardando" value={counts.aguardando} />
+        <Kpi label="Em validação" value={counts.validacao} />
+        <Kpi label="Resolvido" value={counts.resolvidos} />
         <Kpi label="Atrasados" value={counts.atrasados} tone="destructive" />
         <Kpi label="Alta prioridade (P1)" value={counts.altaPrioridade} tone="accent" />
       </div>

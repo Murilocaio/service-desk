@@ -7,31 +7,33 @@ import {
   type TicketStatus,
 } from "@/lib/domain";
 
-const statusStyle: Record<TicketStatus, string> = {
+const statusStyle: Record<string, string> = {
   novo: "bg-info/10 text-info border-info/30",
-  triagem: "bg-info/10 text-info border-info/30",
-  atribuido: "bg-primary/10 text-primary border-primary/30",
   atendimento: "bg-primary/15 text-primary border-primary/40",
+  aguardando: "bg-warning/15 text-warning-foreground border-warning/40",
   aguardando_usuario: "bg-warning/15 text-warning-foreground border-warning/40",
   aguardando_terceiro: "bg-warning/15 text-warning-foreground border-warning/40",
   validacao: "bg-accent/20 text-accent-foreground border-accent/40",
   resolvido: "bg-success/12 text-success border-success/30",
-  encerrado: "bg-muted text-muted-foreground border-border",
-  reaberto: "bg-destructive/10 text-destructive border-destructive/30",
-  cancelado: "bg-muted text-muted-foreground border-border line-through",
 };
 
 export function StatusBadge({ status, className }: { status: TicketStatus; className?: string }) {
+  const rawStatus = String(status);
+  const normalized =
+    rawStatus === "aguardando_usuario" || rawStatus === "aguardando_terceiro"
+      ? "aguardando"
+      : status;
+
   return (
     <span
       className={cn(
         "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap",
-        statusStyle[status],
+        statusStyle[normalized],
         className,
       )}
     >
       <span className="size-1.5 rounded-full bg-current" />
-      {STATUS_LABELS[status]}
+      {STATUS_LABELS[normalized] ?? STATUS_LABELS[status] ?? "Sem status"}
     </span>
   );
 }
