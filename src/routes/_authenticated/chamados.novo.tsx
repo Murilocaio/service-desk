@@ -81,19 +81,7 @@ function NewTicketPage() {
     queryKey: ["ticket-form-options"],
     queryFn: async () => {
       const [categories, teams] = await Promise.all([
-        supabase
-          .from("categories")
-          .select("id,name")
-          .eq("is_active", true)
-          .in("name", [
-            "Administrativo",
-            "TI",
-            "Fiscalização",
-            "AT (Fiscalização AT)",
-            "Treinamento",
-            "Subterrâneo",
-          ])
-          .order("name"),
+        supabase.from("categories").select("id,name").eq("is_active", true).order("name"),
         supabase.from("teams").select("id,name").eq("is_active", true).order("name"),
       ]);
       return { categories: categories.data ?? [], teams: teams.data ?? [] };
